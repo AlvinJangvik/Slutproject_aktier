@@ -7,28 +7,39 @@ namespace Riktiga_aktie_spelet
     class Stocks
     {
         private string name;
-        private int status; //Om aktien är plus eller minus
+        private int newStatus; //Visar det nuvarande värdet på aktien 
+        private int oldStatus; //Visar värdet på aktien förra rundan
         private int portfolio; //Hur mycket man äger av aktien
         private int change; //Hur mycket aktien kan förändras
         private bool active; //Om man har investerat
         private int money; //Hur mycket man investerade från början
         private int potential; //Sannolikheten att det går bra för en aktie
         private int specialChange; //För att event ska kunna påvärka hur aktien ändras
+        private int tempChange; //Visar hur mycket en aktie har gått ner eller upp sen förra rundan
+
         public Stocks(string n, int c, int s)
         {
             name = n;
-            status = 0;
+            newStatus = 1;
+            oldStatus = 1;
             portfolio = 0;
             change = c;
             active = false;
             money = 0;
             potential = s;
+            specialChange = 0;
         }
 
-        public int Status
+        public int NewStatus
         {
-            get { return status; }
-            set { status = value; }
+            get { return newStatus; }
+            set { newStatus = value; }
+        }
+
+        public int OldStatus
+        {
+            get { return oldStatus; }
+            set { oldStatus = value; }
         }
 
         public int Portfolio
@@ -69,6 +80,16 @@ namespace Riktiga_aktie_spelet
         {
             get { return money; }
             set { money = value;  }
+        }
+        public int SpecialChange
+        {
+            get { return specialChange; }
+            set { specialChange = value; }
+        }
+        public int TempChange
+        {
+            get { return tempChange; }
+            set { tempChange = value; }
         }
     }
 }

@@ -6,5 +6,13 @@ namespace Riktiga_aktie_spelet
 {
     class StockChange
     {
+        public int Change(int c, int s, int sp, int po)
+        {
+            Random rand = new Random();
+            int r = rand.Next(-c, c + 1);
+            s += r + sp + po; 
+            return s;
+        }
+
     }
 }
