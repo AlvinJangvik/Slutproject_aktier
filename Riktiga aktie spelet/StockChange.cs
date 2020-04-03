@@ -10,7 +10,7 @@ namespace Riktiga_aktie_spelet
         {
             Random rand = new Random();
             int r = rand.Next(-c, c + 1);
-            s += r + sp + po; 
+            s += r + sp + po;  //status += en random baserad på change + special change + potential
             return s;
         }
 
