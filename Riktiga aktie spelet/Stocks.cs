@@ -65,7 +65,7 @@ namespace Riktiga_aktie_spelet
                 }
                 else
                 {
-                    Console.WriteLine("Nu är en active fel!!", Console.ForegroundColor = ConsoleColor.Red);
+                    Console.WriteLine("Nu är en active fel!!", Console.ForegroundColor = ConsoleColor.Red); //Error medelande om jag har råkat sätta active till något annat än en bool.
                 }
             }
         }

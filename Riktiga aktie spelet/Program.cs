@@ -14,8 +14,10 @@ namespace Riktiga_aktie_spelet
             Ints variable = new Ints(1000);
             StockChange stocks = new StockChange();
 
-            int temp;
+            int temp = 0; //Fick error när den inte hade et värde från början
             int val;
+
+            Menu.Start();
 
             while (true) //Spel-loop
             {
@@ -26,42 +28,83 @@ namespace Riktiga_aktie_spelet
                 bröd.TempChange = bröd.NewStatus - bröd.OldStatus;
                 vapen.TempChange = vapen.NewStatus - vapen.OldStatus;
 
+                //Portfolie förändring
+                olja.Portfolio += olja.Money * olja.TempChange;
+                bröd.Portfolio += bröd.Money * bröd.TempChange;
+                vapen.Portfolio += vapen.Money * vapen.TempChange;
+
                 while (true)
                 {
-                    Console.WriteLine("|Olja: " + olja.NewStatus + "| Bröd: " + bröd.NewStatus + "| Vapen: " + vapen.NewStatus + "|", Console.ForegroundColor = ConsoleColor.Blue);
+                    for(int i = 25; i>0; i--)
+                    {
+                        Console.WriteLine();
+                    }
+                    Console.WriteLine("|Aktievärde| Olja: " + olja.NewStatus + "| Bröd: " + bröd.NewStatus + "| Vapen: " + vapen.NewStatus + "|", Console.ForegroundColor = ConsoleColor.Blue);
                     Console.WriteLine("");
-                    Console.WriteLine("|Olja förändring: " + olja.TempChange + "| Bröd förändring: " + bröd.TempChange + "| Vapen förändring: " + vapen.TempChange + "|", Console.ForegroundColor = ConsoleColor.Blue);
-                    Console.WriteLine("Vill du invester i( 1) (2) eller (3)?");
-                    int.TryParse(Console.ReadLine(), out val);
+                    Console.WriteLine("|Förändring| Olja: " + olja.TempChange + "| Bröd: " + bröd.TempChange + "| Vapen: " + vapen.TempChange + "|", Console.ForegroundColor = ConsoleColor.Magenta);
+                    Console.WriteLine("");
+                    Console.WriteLine("|Portfolion| Olja: " + olja.Portfolio + "| Bröd: " + bröd.Portfolio + "| Vapen: " + vapen.Portfolio + "|", Console.ForegroundColor = ConsoleColor.Green);
+                    Console.WriteLine("");
+                    Console.WriteLine("Vill du invester i(1), (2), (3) eller (4) för att sälja?", Console.ForegroundColor = ConsoleColor.Red);
+                    
+                    int.TryParse(Console.ReadLine(), out val); 
+                    if( val == 4) { break; }
+
+                    Console.WriteLine("Hur mycket? Du har: " + variable.Money);
                     int.TryParse(Console.ReadLine(), out temp);
-                    if (temp <= variable.Money && temp >= 0 && val > 0 && val < 4)
+                    if (temp <= variable.Money && temp >= 0 && val > 0 && val < 5)
                     {
                         break;
                     }
                     else
                     {
-                        Console.WriteLine("FEL VÄRDE!", Console.ForegroundColor = ConsoleColor.Red);
+                        Console.WriteLine("FEL VÄRDE!", Console.ForegroundColor = ConsoleColor.Red); //Kollar att båda readlines är rätt
                     }
                 }
+                //Vilken aktie som köps
                 if(val == 1)
                 {
-                    bröd.Portfolio=Buy.Stocks(bröd.Portfolio, temp);
-                    bröd.Money = temp;
+                    olja.Money += temp;
+                    variable.Money -= temp;
                 }
                 if (val == 2)
                 {
-                    bröd.Portfolio = Buy.Stocks(bröd.Portfolio, temp);
-                    bröd.Money = temp;
+                    bröd.Money += temp;
+                    variable.Money -= temp;
                 }
                 if (val == 3)
                 {
-                    vapen.Portfolio = Buy.Stocks(vapen.Portfolio, temp);
-                    vapen.Money = temp;
+                    vapen.Money += temp;
+                    variable.Money -= temp;
+                }
+                if (val == 4)
+                {
+                    while (true) //sälja
+                    {
+                        Console.WriteLine("Vilken aktie vill du sälja? (1) (2) eller (3)");
+                        int.TryParse(Console.ReadLine(), out val);
+                        Console.WriteLine("Hur mycket? Olja:" + olja.Portfolio + "$ Bröd:" + bröd.Portfolio + "$ Vapen:" + vapen.Portfolio);
+                        int.TryParse(Console.ReadLine(), out temp);
+                        
+                        if(val < 4 && val > 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("FEL VÄRDE!", Console.ForegroundColor = ConsoleColor.Red);
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                    }
+                    if (val == 1) { Sälja.start(ref variable.Money, olja.Money, olja.Portfolio, temp); } //använda sälj metoden, får fixa senare
                 }
 
+                //Status uppdateringar
                 olja.OldStatus = olja.NewStatus;
                 bröd.OldStatus = bröd.NewStatus;
                 vapen.OldStatus = vapen.NewStatus;
+
+                
             }
         }
     }
