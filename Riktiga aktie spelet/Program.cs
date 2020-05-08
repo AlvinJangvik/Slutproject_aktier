@@ -96,7 +96,21 @@ namespace Riktiga_aktie_spelet
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                     }
-                    if (val == 1) { Sälja.start(ref variable.Money, olja.Money, olja.Portfolio, temp); } //använda sälj metoden, får fixa senare
+                    if (val == 1) //Säjlningen
+                    {
+                        variable.Money += temp;
+                        olja.Portfolio -= temp;
+                    }
+                    if (val == 2) //Säjlningen
+                    {
+                        variable.Money += temp;
+                        bröd.Portfolio -= temp;
+                    }
+                    if (val == 3) //Säjlningen
+                    {
+                        variable.Money += temp;
+                        vapen.Portfolio -= temp;
+                    }
                 }
 
                 //Status uppdateringar
