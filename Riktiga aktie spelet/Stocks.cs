@@ -14,7 +14,6 @@ namespace Riktiga_aktie_spelet
         private bool active; //Om man har investerat
         private int money; //Hur mycket man investerade från början
         private int potential; //Sannolikheten att det går bra för en aktie
-        private int specialChange; //För att event ska kunna påvärka hur aktien ändras
         private int tempChange; //Visar hur mycket en aktie har gått ner eller upp sen förra rundan
 
         public Stocks(string n, int c, int s)
@@ -27,7 +26,6 @@ namespace Riktiga_aktie_spelet
             active = false;
             money = 0;
             potential = s;
-            specialChange = 0;
         }
 
         public int NewStatus
@@ -81,11 +79,7 @@ namespace Riktiga_aktie_spelet
             get { return money; }
             set { money = value;  }
         }
-        public int SpecialChange
-        {
-            get { return specialChange; }
-            set { specialChange = value; }
-        }
+        
         public int TempChange
         {
             get { return tempChange; }
