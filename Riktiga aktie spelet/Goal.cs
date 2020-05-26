@@ -5,7 +5,14 @@ using System.Text;
 namespace Riktiga_aktie_spelet
 {
     class Goal
-    {
+    {   
+         /// <summary>
+        /// Ser till att man kan vinna och förlora genom att kolla värdet på variabeln Money samt värdet på alla 3 portfolier.
+        /// </summary>
+        /// <param name="m">Spelarens pengar</param>
+        /// <param name="op">Olja portfoliet</param>
+        /// <param name="bp">Bröd portfoliet</param>
+        /// <param name="vp">Vapen portfoliet</param> 
          public static void Check(int m, int op, int bp, int vp)
          {
             if (m >= 500000)//Kollar om spelaren har mer eller like med 500k
