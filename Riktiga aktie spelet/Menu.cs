@@ -7,6 +7,10 @@ namespace Riktiga_aktie_spelet
     class Menu
     {
         private static int svåroghetsGrad;
+        /// <summary>
+        /// Startmenyn, Låter spelaren välja mellan lätt och svårt samt säger hur man vinner och förlorar
+        /// </summary>
+        /// <param name="d">Sparar svårighetsgraden och skickar den till spel loopen</param>  
         public static void Start(ref int d)//Gör inget än
         {
             Console.WriteLine("     ____________Alvins Aktie Simulator________ ");
