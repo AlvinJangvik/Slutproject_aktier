@@ -6,6 +6,13 @@ namespace Riktiga_aktie_spelet
 {
     class StockChange
     {
+         /// <summary>
+        /// Ändrar den aktien som skickas in genom att använda Change, Potential och State.
+        /// </summary>
+        /// <param name="c">Hur mycket aktien kan förändras, kastas in i random</param>
+        /// <param name="po">Hur stor chans det är att aktien går plus eller minus</param>
+        /// <param name="s">Vilket värde aktien har just nu</param>
+        /// <returns></returns> 
         public int Change(int c, int po, int s)
         {
             Random rand = new Random();
