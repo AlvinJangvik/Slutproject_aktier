@@ -4,7 +4,11 @@ namespace Riktiga_aktie_spelet
 {
     class Program
     {
-
+        /// <summary>
+        /// Spel-loopen. Skulle vart indelad i flera metoder men fokuserade förmycket på att 
+        /// använda klasser till så mycket som möjligt att jag glömde bort det. 
+        /// Fixar igentligen allt. Sätter aktiern, spel menyn, aktie säljning och köpning m.m.
+        /// </summary> 
         static void Main(string[] args)
         {
             //aktier
