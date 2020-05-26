@@ -8,7 +8,12 @@ namespace Riktiga_aktie_spelet
     {
         private int time; //Hur länge eventet håller på
         private int change; // hur mycket eventet ändrar
-
+        
+        /// <summary>
+        /// Fixar variablerna som ändras när ett event händer
+        /// </summary>
+        /// <param name="t">Tiden som eventet håller på</param>
+        /// <param name="c">Förändringen i aktierna som kommer hända</param> 
         public Event(int t, int c)
         {
             time = t;
